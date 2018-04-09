@@ -1,0 +1,26 @@
+'Need to create Userform and then you can run this macro, if you are using multiple userform then change number of userform accordingly.
+
+Sub ExcelImport()
+
+Dim Excelfile As String
+Dim Location As Variant
+Dim Def1, Def2 As String
+
+Set Location = UserForm1.TextBox1
+
+Excelfile = Location & "\ExcelDatafile.csv"
+
+If Dir(Excelfile, vbDirectory) = vbNullString Then
+MsgBox ("Excel File could not be found")
+    Unload UserForm1
+    End
+Else
+Workbooks.Open (Excelfile)
+ActiveSheet.Activate
+Sheets.Copy Before:=ThisWorkbook.Sheets(Sheets.Count)
+ActiveSheet.Name = "Excelfile"
+Def1 = ActiveSheet.Range("A1").Value
+ActiveSheet.Range("A1").Value = UCase(Def1)
+Workbooks("ExcelDatafile.csv").Close
+
+End Sub
