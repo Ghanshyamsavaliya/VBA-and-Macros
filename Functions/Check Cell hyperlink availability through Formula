@@ -1,0 +1,13 @@
+'Save your file as .xlsm to allow Macros
+'Alt + F11 to open Visual Basic
+'Insert -> Module
+'Paste this function, it returns the count of hyperlinks in a range:
+
+      Function IsHyperlink(r As Range) As Integer
+      IsHyperlink = r.Hyperlinks.Count
+      End Function
+
+'Alt+Q
+'Use your new function with the if conditions to display your text:
+
+      =IF(IsHyperlink(A1),"LINK","NO LINK")
