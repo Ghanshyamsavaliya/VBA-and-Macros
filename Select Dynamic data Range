@@ -1,0 +1,19 @@
+Sub DynamicRange()
+
+Dim ttab As Worksheet
+Dim LastRow As Long
+Dim LastColumn As Long
+Dim StartCell As Range
+
+'defination of variables
+Set ttab = Worksheets("Sheet1")
+Set StartCell = Range("A1")
+
+'Find the Last Row and Column
+  LastRow = ttab.Cells(ttab.Rows.Count, StartCell.Column).End(xlUp).Row
+  LastColumn = ttab.Cells(StartCell.Row, ttab.Columns.Count).End(xlToLeft).Column
+
+'Select the Range
+  ttab.Range(StartCell, ttab.Cells(LastRow, LastColumn)).Select
+
+End Sub
